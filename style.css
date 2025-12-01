@@ -286,58 +286,29 @@ p {
     opacity: 1;
 }
 
-/* Profile Container */
-.projects-container {
-    display: flex;              
-    gap: 40px;                 
-    overflow-x: auto;          
-    padding: 20px 0;
-    margin-bottom: 60px;
-    scrollbar-width: thin;
-    scrollbar-color: #2afc85 rgba(26, 31, 46, 0.6);
-}
-
-.projects-container::-webkit-scrollbar {
-    height: 8px;               
-}
-
-.projects-container::-webkit-scrollbar-track {
-    background: rgba(26, 31, 46, 0.6);
-    border-radius: 4px;
-}
-
-.projects-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, #1ed761 0%, #2afc85 100%);
-    border-radius: 4px;
-}
-
-.projects-horizontal {
-    display: flex;
-    gap: 30px;
-    padding: 10px;
-    min-width: min-content;
-}
-
-.project-card {
-    background: rgba(26, 31, 46, 0.6);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(42, 252, 133, 0.1);
-    min-width: 350px;
-    max-width: 400px;
+/* Profile Container - FIXED */
+.profile-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
     flex-shrink: 0;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(42, 252, 133, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 0.5s;
 }
 
 .profile-img {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 10;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .profile-img:hover {
@@ -543,12 +514,37 @@ section {
     transform: scale(1.05);
 }
 
-/* Projects Section */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+/* Projects Section - HORIZONTAL SCROLL CAROUSEL */
+.projects-container {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px 0 40px 0;
     margin-bottom: 60px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #2afc85 rgba(26, 31, 46, 0.6);
+}
+
+.projects-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+    background: rgba(26, 31, 46, 0.6);
+    border-radius: 10px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #1ed761 0%, #2afc85 100%);
+    border-radius: 10px;
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #2afc85 0%, #15c46a 100%);
 }
 
 .project-card {
@@ -557,6 +553,10 @@ section {
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid rgba(42, 252, 133, 0.1);
+    flex: 0 0 380px;
+    scroll-snap-align: start;
+    min-width: 380px;
+    max-width: 380px;
 }
 
 .project-card:hover {
@@ -659,22 +659,9 @@ section {
     text-align: center;
     margin-top: 60px;
 }
+
 .projects-cta .btn {
     display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    min-height: 22px;
-    margin: 0 auto;
-    padding: 15px 40px;
-}
-
-.projects-cta .btn-secondary {
-    display: inline-flex !important;
-    width: auto !important;
-    min-width: 220px;
-    margin: 0 auto;
-    padding: 15px 40px;
 }
 
 /* Skills Section */
@@ -971,15 +958,11 @@ section {
     .social-icons {
         justify-content: center;
     }
-    
-    /* Tablet: 2-column projects */
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    
-    .project-image {
-        height: 220px;
+
+    .project-card {
+        flex: 0 0 calc(50% - 15px);
+        min-width: calc(50% - 15px);
+        max-width: calc(50% - 15px);
     }
 }
 
@@ -1026,47 +1009,16 @@ section {
     .section-header h2 {
         font-size: 2.5rem;
     }
-    
-    /* Mobile: Single column projects */
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        margin-bottom: 50px;
+
+    .projects-container {
+        gap: 20px;
+        padding: 20px 0 30px 0;
     }
-    
+
     .project-card {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    
-    .project-image {
-        height: 200px;
-    }
-    
-    .project-content {
-        padding: 25px;
-    }
-    
-    .project-content h3 {
-        font-size: 1.3rem;
-    }
-    
-    .project-content p {
-        font-size: 0.95rem;
-    }
-    
-    .project-link {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .projects-cta {
-        margin-top: 40px;
-    }
-    
-    .projects-cta .btn-secondary {
-        min-width: 180px;
-        padding: 12px 35px;
+        flex: 0 0 320px;
+        min-width: 320px;
+        max-width: 320px;
     }
 
     .skills-grid {
@@ -1142,51 +1094,6 @@ section {
     .section-header h2 {
         font-size: 2rem;
     }
-    
-    /* Small mobile: Compact projects */
-    .projects-grid {
-        gap: 25px;
-        margin-bottom: 40px;
-    }
-    
-    .project-card {
-        border-radius: 15px;
-    }
-    
-    .project-image {
-        height: 180px;
-    }
-    
-    .project-content {
-        padding: 20px;
-    }
-    
-    .project-content h3 {
-        font-size: 1.2rem;
-    }
-    
-    .project-content p {
-        font-size: 0.9rem;
-    }
-    
-    .tech-tag {
-        padding: 4px 10px;
-        font-size: 0.75rem;
-    }
-    
-    .project-link {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .projects-cta {
-        margin-top: 30px;
-    }
-    
-    .projects-cta .btn-secondary {
-        min-width: 160px;
-        padding: 10px 30px;
-    }
 
     .cta-buttons {
         flex-direction: column;
@@ -1195,6 +1102,16 @@ section {
 
     .contact-form {
         padding: 25px;
+    }
+
+    .projects-container {
+        gap: 15px;
+    }
+
+    .project-card {
+        flex: 0 0 280px;
+        min-width: 280px;
+        max-width: 280px;
     }
 
     .profile-container {
