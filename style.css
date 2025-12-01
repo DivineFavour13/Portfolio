@@ -971,6 +971,16 @@ section {
     .social-icons {
         justify-content: center;
     }
+    
+    /* Tablet: 2-column projects */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .project-image {
+        height: 220px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1016,9 +1026,47 @@ section {
     .section-header h2 {
         font-size: 2.5rem;
     }
-
+    
+    /* Mobile: Single column projects */
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 35px;
+        margin-bottom: 50px;
+    }
+    
+    .project-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .project-image {
+        height: 200px;
+    }
+    
+    .project-content {
+        padding: 25px;
+    }
+    
+    .project-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .project-content p {
+        font-size: 0.95rem;
+    }
+    
+    .project-link {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .projects-cta {
+        margin-top: 40px;
+    }
+    
+    .projects-cta .btn-secondary {
+        min-width: 180px;
+        padding: 12px 35px;
     }
 
     .skills-grid {
@@ -1093,6 +1141,51 @@ section {
 
     .section-header h2 {
         font-size: 2rem;
+    }
+    
+    /* Small mobile: Compact projects */
+    .projects-grid {
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+    
+    .project-card {
+        border-radius: 15px;
+    }
+    
+    .project-image {
+        height: 180px;
+    }
+    
+    .project-content {
+        padding: 20px;
+    }
+    
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .project-content p {
+        font-size: 0.9rem;
+    }
+    
+    .tech-tag {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+    
+    .project-link {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .projects-cta {
+        margin-top: 30px;
+    }
+    
+    .projects-cta .btn-secondary {
+        min-width: 160px;
+        padding: 10px 30px;
     }
 
     .cta-buttons {
