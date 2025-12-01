@@ -287,25 +287,57 @@ p {
 }
 
 /* Profile Container */
-.profile-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
+.projects-container {
+    display: flex;              
+    gap: 40px;                 
+    overflow-x: auto;          
+    padding: 20px 0;
+    margin-bottom: 60px;
+    scrollbar-width: thin;
+    scrollbar-color: #2afc85 rgba(26, 31, 46, 0.6);
+}
+
+.projects-container::-webkit-scrollbar {
+    height: 8px;               
+}
+
+.projects-container::-webkit-scrollbar-track {
+    background: rgba(26, 31, 46, 0.6);
+    border-radius: 4px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #1ed761 0%, #2afc85 100%);
+    border-radius: 4px;
+}
+
+.projects-horizontal {
+    display: flex;
+    gap: 30px;
+    padding: 10px;
+    min-width: min-content;
+}
+
+.project-card {
+    background: rgba(26, 31, 46, 0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(42, 252, 133, 0.1);
+    min-width: 350px;
+    max-width: 400px;
+    flex-shrink: 0;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(42, 252, 133, 0.1);
 }
 
 .profile-img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
-    border: 4px solid #0c0f17;
-    transition: all 0.3s ease;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
 }
 
 .profile-img:hover {
@@ -625,6 +657,24 @@ section {
 
 .projects-cta {
     text-align: center;
+    margin-top: 60px;
+}
+.projects-cta .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    min-height: 22px;
+    margin: 0 auto;
+    padding: 15px 40px;
+}
+
+.projects-cta .btn-secondary {
+    display: inline-flex !important;
+    width: auto !important;
+    min-width: 220px;
+    margin: 0 auto;
+    padding: 15px 40px;
 }
 
 /* Skills Section */
